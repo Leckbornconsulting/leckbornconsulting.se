@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="canonical" href="https://leckbornconsulting.se/">
+<meta property="og:type" content="website"><meta property="og:locale" content="sv_SE"><meta property="og:site_name" content="Leckborn Consulting AB">
+<meta property="og:title" content="Erupter bolagsfabriken – Leckborn Consulting AB"><meta property="og:description" content="Erupter är bolagsfabriken hos Leckborn Consulting AB. Idéer analyseras, testas mot riktiga kunder och byggs till bolag med AI – människor fattar besluten."><meta property="og:url" content="https://leckbornconsulting.se/">
+<meta name="theme-color" content="#160f1a"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23160f1a'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff5a5a'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Leckborn Consulting AB", "url": "https://leckbornconsulting.se/", "email": "info@leckbornconsulting.se", "description": "Erupter är bolagsfabriken hos Leckborn Consulting AB. Idéer analyseras, testas mot riktiga kunder och byggs till bolag med AI – människor fattar besluten.", "brand": {"@type": "Brand", "name": "Erupter"}}</script>
+<title>Erupter bolagsfabriken – Leckborn Consulting AB</title>
+<meta name="description" content="Erupter är bolagsfabriken hos Leckborn Consulting AB. Idéer analyseras, testas mot riktiga kunder och byggs till bolag med AI – människor fattar besluten.">
+<style>
+/* Layout: centrerad, tung typografi över ett partikelfält. Scrollen berättar fabrikens sållning:
+   tusentals idéer → analys → kunder → få bärande bolag. Därefter ett vågrätt flöde och ett ljust kontaktkort. */
+:root{
+  --djup:#160f1a; --yta:#21182a; --yta2:#2c2136; --text:#f7eef0; --svag:#c2b3bf; --linje:#3d3047;
+  --magma:#ff7a3d; --glod:#ff3d7f; --viol:#9b6bff; --aska:#6d6072; --kort:#f7eef0; --kort-text:#1b1320;
+  --tung:"Avenir Next","Avenir","Century Gothic","Futura","Trebuchet MS",system-ui,sans-serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:clip;background:var(--djup);color:var(--text);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--magma);text-underline-offset:.22em}
+:focus-visible{outline:3px solid var(--magma);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--tung);font-weight:800;letter-spacing:-.035em;margin:0;text-wrap:balance;line-height:.98}
+p{margin:0}
+.ram{max-width:78rem;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.hopp{position:absolute;left:1rem;top:-4rem;background:var(--magma);color:var(--djup);padding:.6rem 1rem;z-index:20;border-radius:8px}.hopp:focus{top:1rem}
+.knapp{display:inline-flex;align-items:center;justify-content:center;min-height:3.3rem;padding:0 1.7rem;border-radius:999px;border:0;cursor:pointer;font:700 1rem/1 var(--sans);text-decoration:none;color:var(--djup);background:linear-gradient(100deg,var(--magma),var(--glod));box-shadow:0 0 0 0 rgba(255,90,90,.0);transition:box-shadow .3s ease,transform .2s ease}
+.knapp:hover{box-shadow:0 0 2.4rem -.2rem rgba(255,96,96,.55);transform:translateY(-1px)}
+.knapp.mork{background:var(--kort-text);color:var(--kort)}
+
+.topp{position:fixed;inset:0 0 auto;z-index:10;padding-top:env(safe-area-inset-top,0px);transition:background .3s ease}
+.topp.fast{background:color-mix(in srgb,var(--djup) 82%,transparent);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--linje)}
+.topp .ram{display:flex;align-items:center;justify-content:space-between;min-height:4.2rem;gap:1rem}
+.marke{font:800 1.15rem/1 var(--tung);letter-spacing:-.04em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.55rem}
+.marke i{width:.8rem;height:.8rem;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffd2a8,var(--magma) 45%,var(--glod));box-shadow:0 0 1rem var(--glod)}
+.meny{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0}
+.meny a{color:var(--text);text-decoration:none;font-weight:600;font-size:.97rem}.meny a:hover{color:var(--magma)}
+@media(max-width:44rem){.meny li:not(:last-child){display:none}}
+
+/* Filmen */
+.film{position:relative;height:420vh}
+.scen{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.scen canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.kapitel{position:absolute;left:0;right:0;top:calc(5.2rem + env(safe-area-inset-top,0px));text-align:center;pointer-events:none;opacity:0;z-index:2}
+.kapitel>div{max-width:62rem;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px));pointer-events:auto}
+.kapitel[data-k="0"]{opacity:1;top:42%;transform:translateY(-50%)}
+.kapitel h1{font-size:clamp(2.9rem,7.2vw,6.4rem)}
+.kapitel h1,.kapitel h2{text-shadow:0 0 40px var(--djup),0 0 14px var(--djup)}
+.kapitel p{text-shadow:0 0 12px var(--djup),0 0 4px var(--djup),0 0 2px var(--djup)}
+.kapitel h2{font-size:clamp(2.4rem,6.6vw,5.4rem)}
+.kapitel p{margin:1.3rem auto 0;font-size:clamp(1.05rem,1.7vw,1.25rem);color:var(--svag);max-width:36rem}
+.kapitel .knappar{margin-top:2.1rem;display:flex;flex-wrap:wrap;gap:1rem 1.5rem;justify-content:center;align-items:center}
+.kapitel .lank{color:var(--text);font-weight:600}
+.etikett{display:inline-block;font:700 .82rem/1 var(--sans);letter-spacing:.05em;color:var(--magma);border:1px solid color-mix(in srgb,var(--magma) 50%,transparent);border-radius:999px;padding:.45rem .8rem;margin-bottom:1.1rem}
+.matare{position:absolute;left:50%;bottom:calc(1.5rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;gap:.45rem;z-index:2}
+.matare span{width:2.2rem;height:3px;border-radius:2px;background:var(--linje);overflow:hidden;position:relative}
+.matare span i{position:absolute;inset:0;background:linear-gradient(90deg,var(--magma),var(--glod));transform-origin:left;transform:scaleX(0)}
+.raknare{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(1.3rem + env(safe-area-inset-bottom,0px));font:600 .8rem/1.3 var(--sans);color:var(--svag);font-variant-numeric:tabular-nums;text-align:right;z-index:2}
+@media(max-width:44rem){.raknare{display:none}.kapitel[data-k="0"]{transform:translateY(-62%)}}
+
+/* Sektioner */
+.sektion{padding-block:clamp(5rem,12vw,9rem)}
+.huvudrad{text-align:center;max-width:46rem;margin:0 auto clamp(2.8rem,6vw,4.5rem)}
+.huvudrad h2{font-size:clamp(2.4rem,6vw,4.6rem)}
+.huvudrad p{margin-top:1.1rem;color:var(--svag);font-size:1.12rem}
+
+/* Vågrätt flöde */
+.flode{position:relative;height:280vh}
+.flode-scen{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:2.4rem}
+.flode-scen .huvudrad{margin-bottom:0}
+.bana{display:flex;gap:1.2rem;padding-left:max(20px,calc((100vw - 74rem)/2));padding-right:20vw;will-change:transform}
+.station{flex:none;width:min(80vw,31rem);min-height:22rem;background:var(--yta);border:1px solid var(--linje);border-radius:24px;padding:1.8rem;display:flex;flex-direction:column;gap:.7rem;position:relative}
+.station b{font:800 6rem/.9 var(--tung);letter-spacing:-.05em;background:linear-gradient(120deg,var(--magma),var(--glod) 55%,var(--viol));-webkit-background-clip:text;background-clip:text;color:transparent}
+.station h3{font-size:2.4rem;letter-spacing:-.03em}
+.station p{color:var(--svag);font-size:1.1rem}
+.station .vem{margin-top:auto;font-size:.88rem;font-weight:600;color:var(--text);opacity:.8}
+.station.tommy{background:linear-gradient(160deg,color-mix(in srgb,var(--magma) 22%,var(--yta)),var(--yta) 60%);border-color:color-mix(in srgb,var(--magma) 55%,var(--linje))}
+
+/* Tjänster */
+.plattor{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))}
+@media(min-width:62rem){.plattor{grid-template-columns:repeat(3,1fr)}.plattor .platta:first-child{grid-column:span 2}.plattor .platta:last-child{grid-column:span 2}}
+.platta{--mx:50%;--my:0%;position:relative;border-radius:24px;padding:2rem;background:var(--yta);border:1px solid var(--linje);overflow:hidden;display:flex;flex-direction:column;gap:.8rem;isolation:isolate}
+.platta::before{content:"";position:absolute;inset:-1px;border-radius:inherit;z-index:-1;background:radial-gradient(28rem circle at var(--mx) var(--my),color-mix(in srgb,var(--glod) 20%,transparent),transparent 45%);opacity:0;transition:opacity .3s ease}
+.platta:hover::before{opacity:1}
+.platta h3{font-size:clamp(1.7rem,3vw,2.4rem)}
+.platta>p{color:var(--svag);max-width:42rem}
+.platta ul{list-style:none;margin:.4rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.platta li{border:1px solid var(--linje);border-radius:999px;padding:.3rem .8rem;font-size:.9rem;color:var(--svag)}
+.platta .valj{margin-top:auto;padding-top:1rem;font-weight:700;color:var(--magma);text-decoration:none;align-self:flex-start}
+.platta .valj:hover{text-decoration:underline}
+
+/* Vem gör vad */
+.delning{display:grid;gap:1rem}
+@media(min-width:52rem){.delning{grid-template-columns:1fr 1fr}}
+.halva{border-radius:24px;padding:clamp(1.8rem,4vw,2.8rem);border:1px solid var(--linje)}
+.halva h3{font-size:clamp(2rem,4vw,3rem);margin-bottom:1.2rem}
+.halva ul{list-style:none;margin:0;padding:0}
+.halva li{padding:.75rem 0;border-top:1px solid var(--linje);font-size:1.08rem}
+.halva.agare{background:var(--kort);color:var(--kort-text);border-color:var(--kort)}
+.halva.agare li{border-color:#d9cdd3}
+.halva.fabrik{background:var(--yta)}
+
+/* Kontakt – ljust kort */
+.kontakt-kort{background:var(--kort);color:var(--kort-text);border-radius:32px;padding:clamp(2rem,6vw,4.5rem);display:grid;gap:2.5rem}
+@media(min-width:56rem){.kontakt-kort{grid-template-columns:5fr 6fr}}
+.kontakt-kort h2{font-size:clamp(2.4rem,5.4vw,4.2rem)}
+.kontakt-kort .ingress{margin-top:1.2rem;color:#4e4352;font-size:1.1rem;max-width:28rem}
+.formular{display:grid;gap:1rem}
+.falt{display:grid;gap:.4rem}.falt label{font-weight:700}
+.valfri{font-weight:400;color:#5f5463}
+.par{display:grid;gap:1rem}@media(min-width:40rem){.par{grid-template-columns:1fr 1fr}}
+input,select,textarea{font:inherit;color:var(--kort-text);background:#fff;border:1.5px solid #cbbdc5;border-radius:14px;padding:.8rem .95rem;width:100%;min-height:3.1rem}
+textarea{min-height:8rem;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--glod);outline-offset:1px;border-color:var(--glod)}
+.samtycke{display:flex;gap:.7rem;align-items:flex-start;font-size:.97rem;color:#4e4352}
+.samtycke input{width:1.3rem;height:1.3rem;min-height:1.3rem;margin-top:.2rem;flex:none;accent-color:#c42a5f}
+.honung{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.kvitto{border-radius:18px;padding:1.6rem;background:#fff;border:1.5px solid #e4b9c6}
+.kvitto h3{font-size:1.8rem;margin-bottom:.5rem}.kvitto p{color:#4e4352}
+.fot{border-top:1px solid var(--linje);padding-block:2.4rem calc(2.4rem + env(safe-area-inset-bottom,0px));color:var(--svag);font-size:.92rem;margin-top:clamp(4rem,10vw,7rem)}
+.fot .ram{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}.fot strong{color:var(--text)}
+
+@media (max-width:52rem){
+  .flode{height:auto}.flode-scen{position:relative;height:auto;padding-block:5rem}
+  .bana{flex-direction:column;padding-right:max(20px,env(safe-area-inset-right,0px));transform:none!important}
+  .station{width:auto;min-height:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .film{height:auto}.scen{position:relative;height:auto;overflow:visible;display:grid;padding-top:5rem}
+  .scen canvas{position:relative;height:60vh}
+  .kapitel{position:relative;opacity:1!important;top:auto!important;transform:none!important;padding-block:1.5rem}
+  .matare,.raknare{display:none}
+  .flode{height:auto}.flode-scen{position:relative;height:auto;padding-block:5rem}
+  .bana{flex-wrap:wrap;padding-right:max(20px,env(safe-area-inset-right,0px));transform:none!important}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head><body>
+
+
+<a class="hopp" href="#huvud">Hoppa till innehållet</a>
+<header class="topp" id="topp"><div class="ram">
+  <a class="marke" href="#start"><i aria-hidden="true"></i>Leckborn Consulting AB</a>
+  <ul class="meny"><li><a href="#flode">Flödet</a></li><li><a href="#tjanster">Tjänster</a></li><li><a href="#kontakt">Föreslå en idé</a></li></ul>
+</div></header>
+
+<main id="huvud">
+<section class="film" id="start" aria-label="Erupter bolagsfabriken">
+  <div class="scen">
+    <canvas id="falt" aria-hidden="true"></canvas>
+    <div class="kapitel" data-k="0"><div>
+      <span class="etikett">Erupter · bolagsfabriken</span>
+      <h1>Vi bygger bolag från idé till första kund.</h1>
+      <p>Erupter är bolagsfabriken hos Leckborn Consulting AB. Varje idé analyseras, testas mot riktiga kunder och byggs bara om den håller – med AI som gör jobbet och människor som fattar besluten.</p>
+      <div class="knappar"><a class="knapp" href="#kontakt">Föreslå ett samarbete</a><a class="lank" href="#flode">Se hur fabriken arbetar</a></div>
+    </div></div>
+    <div class="kapitel" data-k="1"><div><span class="etikett">Idéer</span><h2>Det börjar med många idéer.</h2><p>Från oss, från fabriken själv och från människor som kan sin bransch.</p></div></div>
+    <div class="kapitel" data-k="2"><div><span class="etikett">Analys</span><h2>De flesta håller inte.</h2><p>Marknad, betalningsvilja, konkurrens och ekonomi prövas innan något byggs. Det som inte bär sorteras bort tidigt och billigt.</p></div></div>
+    <div class="kapitel" data-k="3"><div><span class="etikett">Kunder</span><h2>Kunderna avgör.</h2><p>Det som återstår testas mot riktiga kunder. Svaren – inte gillamarkeringar – bestämmer vad som går vidare.</p></div></div>
+    <div class="kapitel" data-k="4"><div><span class="etikett">Bolag</span><h2>Få, men bärande, bolag.</h2><p>Kraften läggs på det som håller. Målet är lönsamma bolag, inte flest lanseringar.</p><div class="knappar"><a class="knapp" href="#kontakt">Föreslå en idé</a></div></div></div>
+    <div class="matare" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
+    <div class="raknare" id="raknare" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="flode" id="flode" aria-labelledby="r-flode">
+  <div class="flode-scen">
+    <div class="huvudrad ram"><h2 id="r-flode">Fabrikens flöde</h2><p>Fem steg, alltid i samma ordning. Ägarna fattar besluten i mitten.</p></div>
+    <ol class="bana" id="bana" style="list-style:none;margin:0">
+      <li class="station"><b>1</b><h3>Idé</h3><p>En idé kommer in – från oss, från dig eller från fabrikens egna förslag.</p><span class="vem">Fabriken och du</span></li>
+      <li class="station"><b>2</b><h3>Analys</h3><p>Marknad, kunder, konkurrens, betalningsvilja, juridik och ekonomi. Slutar i en rekommendation: satsa, ändra eller avstå.</p><span class="vem">Fabriken</span></li>
+      <li class="station tommy"><b>3</b><h3>Beslut</h3><p>Ägarna läser analysen och bestämmer. Ingenting byggs, köps eller skickas utan ett ja.</p><span class="vem">Ägarna</span></li>
+      <li class="station"><b>4</b><h3>Första version</h3><p>En första version byggs och kontrolleras automatiskt – så att den går att visa för kunder direkt.</p><span class="vem">Fabriken</span></li>
+      <li class="station"><b>5</b><h3>Kunder</h3><p>Riktiga kunder får svara. Den som säger ja får ett erbjudande. Tystnad är också ett svar.</p><span class="vem">Kunderna</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sektion" id="tjanster" aria-labelledby="r-tjanster"><div class="ram">
+  <div class="huvudrad"><h2 id="r-tjanster">Det vi gör</h2><p>Fabriken bygger egna bolag. Har du en idé eller en bransch att bygga i kan vi göra det tillsammans.</p></div>
+  <div class="plattor" id="plattor"></div>
+</div></section>
+
+<section class="sektion" style="padding-top:0" aria-labelledby="r-vem"><div class="ram">
+  <div class="huvudrad"><h2 id="r-vem">AI gör jobbet. Människor fattar besluten.</h2></div>
+  <div class="delning">
+    <div class="halva fabrik"><h3>Fabriken</h3><ul><li>Analyserar idéer och lämnar en egen rekommendation</li><li>Bygger och kontrollerar första versionen</li><li>Tar fram målgrupp, budskap och kontaktlistor</li><li>Följer upp svar, intäkter och kostnader</li><li>Lär sig av varje beslut och varje utfall</li></ul></div>
+    <div class="halva agare"><h3>Ägarna</h3><ul><li>Bestämmer vilka idéer som satsas på</li><li>Godkänner varje utskick innan det går iväg</li><li>Godkänner alla utgifter och avtal</li><li>Lägger ned det som inte bär</li></ul></div>
+  </div>
+</div></section>
+
+<section class="sektion" id="kontakt" style="padding-top:0" aria-labelledby="r-kontakt"><div class="ram">
+  <div class="kontakt-kort">
+    <div><h2 id="r-kontakt">Har du en idé som borde bli ett bolag?</h2><p class="ingress">Berätta kort om den. Vi svarar via e-post om den passar fabriken.</p><p class="ingress" style="margin-top:1.6rem"><span style="display:block;font-size:.9rem;font-weight:700;color:#5f5463">E-post</span><span style="user-select:all;font-weight:700;color:var(--kort-text);font-size:1.25rem">info@leckbornconsulting.se</span></p></div>
+    <div id="formplats">
+      <form class="formular" id="formular" novalidate>
+        <div class="falt"><label for="f-tjanst">Vad gäller det?</label><select id="f-tjanst" name="tjanst"></select></div>
+        <div class="par">
+          <div class="falt"><label for="f-namn">Namn</label><input id="f-namn" name="namn" autocomplete="name" required maxlength="120"></div>
+          <div class="falt"><label for="f-foretag">Företag <span class="valfri">(valfritt)</span></label><input id="f-foretag" name="foretag" autocomplete="organization" maxlength="120"></div>
+        </div>
+        <div class="falt"><label for="f-mejl">E-post</label><input id="f-mejl" name="mejl" type="email" autocomplete="email" required maxlength="120"></div>
+        <div class="falt"><label for="f-meddelande">Idén i några meningar</label><textarea id="f-meddelande" name="meddelande" required maxlength="4000"></textarea></div>
+        <div class="honung" aria-hidden="true"><label for="f-webb">Lämna tomt</label><input id="f-webb" name="webbplats" tabindex="-1" autocomplete="off"></div>
+        <label class="samtycke"><input type="checkbox" id="f-samtycke" name="samtycke" required><span>Jag godkänner att mina uppgifter används för att besvara förfrågan.</span></label>
+        <p id="formfel" role="alert" style="color:#b0213f;font-weight:700" hidden></p>
+        <div><button class="knapp mork" type="submit">Skicka idén</button></div>
+      </form>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer class="fot"><div class="ram"><span><strong>Leckborn Consulting AB</strong> · Erupter bolagsfabriken</span><span>Inga kakor, ingen spårning</span></div></footer>
+
+<script>
+(function(){
+'use strict';
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+var cl=function(x){return x<0?0:x>1?1:x;};
+var ease=function(x){x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;};
+var mix=function(a,b,t){return a+(b-a)*t;};
+var stilla=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------- Tjänster ----------
+var T=[
+ {id:'bolagsbyggande',namn:'Bolagsbyggande',kort:'Vi tar en idé hela vägen till ett fungerande bolag med produkt, kunder och drift – och mäter i kronor vid varje steg.',ingar:['Affärsanalys','Första version','De första kunderna','Uppföljning av intäkter och kostnader']},
+ {id:'ideanalys',namn:'Idéanalys',kort:'En kritisk bedömning av marknad, betalningsvilja, konkurrens och ekonomi innan något byggs.',ingar:['Marknad och målgrupp','Konkurrens','Ekonomi','Rekommendation']},
+ {id:'validering',namn:'Validering mot kunder',kort:'Vi testar efterfrågan med riktiga kunder innan pengar läggs på utveckling.',ingar:['Målgrupp med källor','Budskap','Kriterium för att lägga ned']},
+ {id:'partnerskap',namn:'Partnerskap',kort:'Har du branschkunskap och en idé? Du står för kunskapen och kontakterna, fabriken för analysen, bygget och driften. Hur ett samarbete läggs upp avgörs från fall till fall.',ingar:['Gemensam analys','Plan för validering och bygge','Överenskommelse om roller och ägande']}
+];
+document.getElementById('plattor').innerHTML=T.map(function(t){return '<article class="platta"><h3>'+esc(t.namn)+'</h3><p>'+esc(t.kort)+'</p><ul aria-label="Det här ingår">'+t.ingar.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul><a class="valj" href="#kontakt" data-valj="'+t.id+'">Fråga om '+esc(t.namn.toLowerCase())+'</a></article>';}).join('');
+document.querySelectorAll('.platta').forEach(function(el){el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px');});});
+var val=document.getElementById('f-tjanst');
+val.innerHTML='<option value="ide">En idé till ett bolag</option>'+T.map(function(t){return '<option value="'+t.id+'">'+esc(t.namn)+'</option>';}).join('')+'<option value="annat">Något annat</option>';
+document.addEventListener('click',function(e){var a=e.target.closest('[data-valj]');if(a)val.value=a.getAttribute('data-valj');});
+
+// ---------- Formulär (förhandsvisning: inget skickas härifrån) ----------
+var form=document.getElementById('formular'),fel=document.getElementById('formfel');
+form.addEventListener('submit',function(e){
+  e.preventDefault();if(form.webbplats.value)return;
+  var s=[];if(!form.namn.value.trim())s.push('namn');if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(form.mejl.value.trim()))s.push('en giltig e-postadress');if(!form.meddelande.value.trim())s.push('idén');if(!form.samtycke.checked)s.push('ditt godkännande');
+  if(s.length){fel.textContent='Fyll i '+s.join(', ')+'.';fel.hidden=false;return;}
+  var amne='Erupter: '+val.options[val.selectedIndex].text+' – '+form.namn.value.trim();
+  var text='Namn: '+form.namn.value.trim()+'\nFöretag: '+form.foretag.value.trim()+'\nE-post: '+form.mejl.value.trim()+'\n\n'+form.meddelande.value.trim();
+  location.href='mailto:info@leckbornconsulting.se?subject='+encodeURIComponent(amne)+'&body='+encodeURIComponent(text);
+  document.getElementById('formplats').innerHTML='<div class="kvitto" role="status" tabindex="-1" id="kvitto"><h3>Nästan klart, '+esc(form.namn.value.trim().split(' ')[0])+'.</h3><p>Ditt e-postprogram öppnas med förfrågan ifylld – tryck Skicka där. Öppnas inget? Mejla direkt till info@leckbornconsulting.se.</p></div>';
+  document.getElementById('kvitto').focus();
+});
+
+// ---------- Sidhuvud och vågrätt flöde ----------
+var topp=document.getElementById('topp'),flode=document.getElementById('flode'),bana=document.getElementById('bana');
+function scrollat(){
+  topp.classList.toggle('fast',scrollY>innerHeight*0.9);
+  if(stilla||innerWidth<=832){bana.style.transform='';return;}
+  var r=flode.getBoundingClientRect(),tot=r.height-innerHeight,p=tot>0?cl(-r.top/tot):0;
+  var max=Math.max(0,bana.scrollWidth-innerWidth+innerWidth*0.1);
+  bana.style.transform='translate3d('+(-max*ease(p)).toFixed(1)+'px,0,0)';
+}
+addEventListener('scroll',scrollat,{passive:true});addEventListener('resize',scrollat);scrollat();
+
+// ---------- Partikelfältet: idéer → analys → kunder → bolag ----------
+var cv=document.getElementById('falt'),ctx=cv.getContext('2d'),film=document.querySelector('.film');
+var kapitel=[].slice.call(document.querySelectorAll('.kapitel')),staplar=[].slice.call(document.querySelectorAll('.matare i')),raknare=document.getElementById('raknare');
+var W=0,H=0,DPR=1,N=0,D=[];
+function slump(i,k){var x=Math.sin(i*127.1+k*311.7)*43758.5453;return x-Math.floor(x);}
+var FARGER=[[255,122,61],[255,61,127],[155,107,255],[255,176,92]],ASKA=[120,104,126];
+var SPRITE={};
+function sprite(c){var k=c.join();if(SPRITE[k])return SPRITE[k];var z=document.createElement('canvas');z.width=z.height=32;var g=z.getContext('2d'),gr=g.createRadialGradient(16,16,0,16,16,16);
+  gr.addColorStop(0,'rgba(255,240,230,1)');gr.addColorStop(0.18,'rgba('+c.join()+',0.95)');gr.addColorStop(0.45,'rgba('+c.join()+',0.28)');gr.addColorStop(1,'rgba('+c.join()+',0)');g.fillStyle=gr;g.fillRect(0,0,32,32);return SPRITE[k]=z;}
+function bygg(){
+  N=W<700?1300:2600;D=[];
+  for(var i=0;i<N;i++){
+    var c=FARGER[Math.floor(slump(i,1)*3.2)%4];
+    // kub (bolag) som partikeln hamnar i, om den överlever: var 9:e
+    var over=i%9===0,kub=(i/9|0)%3,kant=Math.floor(slump(i,7)*12),t=slump(i,8);
+    D.push({a:(slump(i,2)-.5)*1.25,v:.6+slump(i,3)*.7,f:slump(i,4),cx:slump(i,5)*2-1,cy:slump(i,6)*2-1,over:over,kub:kub,kant:kant,t:t,s:(W<700?5:6)+slump(i,9)*(W<700?6:8),c:c,fall:.4+slump(i,10)});
+  }
+}
+function storlek(){DPR=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);if(!N||(W<700)!==(N===1300))bygg();}
+// Kubens tolv kanter
+var HORN=[[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
+var KANTER=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+var P=0,mal=0;
+function rita(tid){
+  if(!W)return;
+  ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
+  var p=P,sek=tid/1000,smal=W<700;
+  // Fasernas framsteg
+  var moln=ease(p/0.22),skan=cl((p-0.30)/0.2),drag=ease((p-0.52)/0.16),kristall=ease((p-0.70)/0.14);
+  var basY=H*1.02,bx=W*0.5,spridX=W*(smal?0.62:0.48),spridY=H*0.40,mY=H*(smal?0.60:0.62);
+  // Kubernas placering och storlek
+  var kubR=Math.min(W,H)*(smal?0.068:0.085),kubX=[W*(smal?0.24:0.30),W*0.5,W*(smal?0.76:0.70)],kubY=H*(smal?0.70:0.68);
+  var vinkel=sek*0.45;
+  var cA=Math.cos(vinkel),sA=Math.sin(vinkel),cB=Math.cos(0.6),sB=Math.sin(0.6);
+  var skanY=mix(H*0.1,H*1.05,skan);
+  ctx.globalCompositeOperation='lighter';
+  for(var i=0;i<N;i++){
+    var d=D[i];
+    // 1. Utbrott: kastbana från kratern (pågår hela tiden, lugnt)
+    var tau=(sek*0.2*d.v+d.f)%1;
+    var ex=bx+d.a*W*0.5*tau,ey=basY-H*1.75*d.v*tau+H*1.45*d.v*tau*tau;
+    // 2. Moln: idéer sprider sig över ytan och svävar
+    var mx=bx+d.cx*spridX+Math.sin(sek*0.5+i)*6,my=mY+d.cy*spridY*(0.75+0.25*Math.abs(d.cx))+Math.cos(sek*0.4+i*1.3)*6;
+    var x=mix(ex,mx,moln),y=mix(ey,my,moln),alfa=mix(0.85*(1-tau*0.55),0.7,moln),r=d.s*mix(1,0.75,moln);
+    var col=d.c;
+    // 3. Analys: en skanning sveper nedåt – det som inte bär slocknar och faller
+    if(skan>0&&!d.over&&my<skanY){var ut=cl((skanY-my)/(H*0.25));col=ut>0.5?ASKA:col;r*=1-ut*0.4;y+=ut*ut*H*0.55*d.fall;alfa*=1-ut*0.85;}
+    if(skan>0&&d.over&&my<skanY){r=d.s*1.35;alfa=Math.min(1,alfa*1.3);}
+    // 4. Kunder: överlevarna dras mot tre kluster
+    if(d.over&&drag>0){var kx=kubX[d.kub]+d.cx*kubR*1.8,ky=kubY+d.cy*kubR*1.8;x=mix(x,kx,drag);y=mix(y,ky,drag);alfa=mix(alfa,0.95,drag);}
+    // 5. Bolag: klustren kristalliseras till roterande kuber
+    if(d.over&&kristall>0){
+      var k=KANTER[d.kant],A=HORN[k[0]],B=HORN[k[1]];
+      var px=mix(A[0],B[0],d.t),py=mix(A[1],B[1],d.t),pz=mix(A[2],B[2],d.t);
+      var rx=px*cA+pz*sA,rz=-px*sA+pz*cA,ry=py*cB-rz*sB,rz2=py*sB+rz*cB;
+      var persp=3.2/(3.2+rz2);
+      var qx=kubX[d.kub]+rx*kubR*persp,qy=kubY+ry*kubR*persp;
+      x=mix(x,qx,kristall);y=mix(y,qy,kristall);r=mix(r,d.s*0.9,kristall);
+    }
+    if(!d.over&&drag>0)alfa*=1-drag*0.8;
+    if(alfa<0.02||y>H+10||y<-10)continue;
+    ctx.globalAlpha=alfa;ctx.drawImage(sprite(col),x-r/2,y-r/2,r,r);
+  }
+  ctx.globalAlpha=1;
+  // Skanningslinjen
+  if(skan>0&&skan<1){var g=ctx.createLinearGradient(0,skanY-40,0,skanY+2);g.addColorStop(0,'rgba(255,61,127,0)');g.addColorStop(1,'rgba(255,122,61,0.35)');ctx.fillStyle=g;ctx.fillRect(0,skanY-40,W,42);
+    ctx.fillStyle='rgba(255,200,170,0.8)';ctx.fillRect(0,skanY,W,1);}
+  // Kubernas kanter och glöd
+  ctx.globalCompositeOperation='source-over';
+  if(kristall>0.3){var o=(kristall-0.3)/0.7;
+    ctx.globalCompositeOperation='lighter';
+    for(var q2=0;q2<3;q2++){var pr=HORN.map(function(h){var rx=h[0]*cA+h[2]*sA,rz=-h[0]*sA+h[2]*cA,ry=h[1]*cB-rz*sB,rz2=h[1]*sB+rz*cB,ps=3.2/(3.2+rz2);return[kubX[q2]+rx*kubR*ps,kubY+ry*kubR*ps];});
+      ctx.lineWidth=1.6;ctx.strokeStyle='rgba(255,140,110,'+(0.75*o)+')';ctx.shadowColor='rgba(255,61,127,0.9)';ctx.shadowBlur=14;ctx.beginPath();
+      KANTER.forEach(function(k){ctx.moveTo(pr[k[0]][0],pr[k[0]][1]);ctx.lineTo(pr[k[1]][0],pr[k[1]][1]);});ctx.stroke();ctx.shadowBlur=0;}
+    ctx.globalCompositeOperation='source-over';
+    for(var q=0;q<3;q++){var gg=ctx.createRadialGradient(kubX[q],kubY,0,kubX[q],kubY,kubR*2.6);gg.addColorStop(0,'rgba(255,61,127,'+(0.16*o)+')');gg.addColorStop(1,'rgba(255,61,127,0)');ctx.fillStyle=gg;ctx.fillRect(kubX[q]-kubR*3,kubY-kubR*3,kubR*6,kubR*6);}
+  }
+  // Kratern
+  var glod=ctx.createRadialGradient(bx,H*1.05,0,bx,H*1.05,W*0.45);glod.addColorStop(0,'rgba(255,90,70,'+(0.28*(1-moln*0.7))+')');glod.addColorStop(1,'rgba(255,61,127,0)');ctx.fillStyle=glod;ctx.fillRect(0,H*0.5,W,H*0.55);
+  // Texter
+  if(!stilla){
+    var F=[[0,0,0.07,0.13],[0.12,0.18,0.27,0.32],[0.32,0.38,0.47,0.52],[0.52,0.58,0.66,0.71],[0.72,0.78,2,3]];
+    kapitel.forEach(function(el,n){var w=F[n],o=n===0?1-cl((p-w[2])/(w[3]-w[2])):cl((p-w[0])/(w[1]-w[0]))*(1-cl((p-w[2])/(w[3]-w[2])));el.style.opacity=o.toFixed(3);el.style.visibility=o<0.02?'hidden':'visible';el.style.filter=o<1?'blur('+((1-o)*8).toFixed(1)+'px)':'';});
+    staplar.forEach(function(s,n){s.style.transform='scaleX('+cl((p-0.12-n*0.2)/0.2).toFixed(3)+')';});
+    var kvar=p<0.30?N:p<0.52?Math.round(N-(N-Math.ceil(N/9))*skan):Math.ceil(N/9);
+    raknare.textContent=p<0.12?'':p<0.72?kvar.toLocaleString('sv-SE')+' idéer kvar':'3 bolag · illustration';
+  }
+}
+function slinga(t){var d=mal-P;if(Math.abs(d)>0.0003)P+=d*0.08;else P=mal;rita(t);requestAnimationFrame(slinga);}
+function scrolla(){var r=film.getBoundingClientRect(),tot=r.height-innerHeight;mal=tot>0?cl(-r.top/tot):0;}
+addEventListener('resize',storlek);storlek();
+if(stilla){P=mal=0.95;rita(1500);addEventListener('resize',function(){rita(1500);});}
+else{addEventListener('scroll',scrolla,{passive:true});scrolla();requestAnimationFrame(slinga);}
+})();
+</script>
+
+</body></html>

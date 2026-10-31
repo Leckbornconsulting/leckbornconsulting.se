@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leckbornconsulting.se/sitemap.xml

@@ -420,9 +420,9 @@ form.addEventListener('submit',function(e){
       var fornamn=data.namn.split(' ')[0];
       document.getElementById('formplats').innerHTML='<div class="kvitto" role="status" tabindex="-1" id="kvitto"><h3>Tack '+esc(fornamn)+', förfrågan är mottagen.</h3><p>Den är sparad och vi svarar via e-post till '+esc(data.mejl)+'.</p><p>Referens: '+esc(ref)+'</p></div>';
       document.getElementById('kvitto').focus();klientId=nyttId();return;}
-    var kod=s.d&&s.d.error;
+    var kod=s.d&&s.d.error,kodnr=(s.d&&Number(s.d.code))||s.kod; // Forminit kan svara HTTP 200 med felkod i kroppen
     if(kod==='FI_SCHEMA_FORMAT_EMAIL'){visaFaltfel('mejl','Skriv en giltig e-postadress, till exempel namn@foretag.se.');visaFel('Något behöver rättas.','Kontrollera e-postadressen.');form.mejl.focus();return;}
-    if(s.kod===429){visaFel('Vänta några sekunder.','Det går att skicka en förfrågan var femte sekund. Försök igen strax.');return;}
+    if(kodnr===429||kod==='TOO_MANY_REQUESTS'){visaFel('Vänta några sekunder.','Det går att skicka en förfrågan var femte sekund. Försök igen strax.');return;}
     visaFel('Förfrågan kunde inte bekräftas.','Ett tekniskt fel uppstod och vi kan inte bekräfta att den sparades.');
   })
   .catch(function(){visaFel('Förfrågan kunde inte skickas.','Anslutningen bröts eller tog för lång tid. Om du försöker igen kan förfrågan komma fram två gånger – det gör inget.');})

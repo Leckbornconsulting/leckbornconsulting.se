@@ -14,7 +14,7 @@
 <meta name="theme-color" content="#160f1a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23160f1a'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff5a5a'/%3E%3C/svg%3E">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[
-{"@type":"Organization","@id":"https://leckbornconsulting.se/#org","name":"Leckborn Consulting AB","url":"https://leckbornconsulting.se/","email":"info@leckbornconsulting.se","logo":"https://leckbornconsulting.se/og.jpg","description":"Vi prövar affärsidéer mot marknaden, bygger en första version och hjälper till med de första kunderna – som tjänst eller i partnerskap.","identifier":{"@type":"PropertyValue","propertyID":"Organisationsnummer","value":"559173-0741"},"address":{"@type":"PostalAddress","addressLocality":"Kungälv","addressCountry":"SE"}},
+{"@type":"Organization","@id":"https://leckbornconsulting.se/#org","name":"Leckborn Consulting AB","url":"https://leckbornconsulting.se/","email":"tommy@leckbornconsulting.se","logo":"https://leckbornconsulting.se/og.jpg","description":"Vi prövar affärsidéer mot marknaden, bygger en första version och hjälper till med de första kunderna – som tjänst eller i partnerskap.","identifier":{"@type":"PropertyValue","propertyID":"Organisationsnummer","value":"559173-0741"},"address":{"@type":"PostalAddress","addressLocality":"Kungälv","addressCountry":"SE"}},
 {"@type":"WebSite","@id":"https://leckbornconsulting.se/#web","url":"https://leckbornconsulting.se/","name":"Erupter bolagsfabriken – Leckborn Consulting AB","inLanguage":"sv","publisher":{"@id":"https://leckbornconsulting.se/#org"}},
 {"@type":"Service","name":"Idéanalys","serviceType":"Idéanalys","description":"En skriftlig, kritisk bedömning av marknad, kunder, konkurrens, betalningsvilja, ekonomi och risker, med en rekommendation: satsa, ändra eller avstå.","provider":{"@id":"https://leckbornconsulting.se/#org"},"areaServed":"SE"},
 {"@type":"Service","name":"Validering mot kunder","serviceType":"Validering","description":"Efterfrågan testas med riktiga kunder innan pengar läggs på utveckling.","provider":{"@id":"https://leckbornconsulting.se/#org"},"areaServed":"SE"},
@@ -23,7 +23,7 @@
 ]}</script>
 <style>
 /* Layout: centrerad, tung typografi över ett partikelfält. En kort scrollfilm (idéer → sållning → bolag) och sedan
-   erbjudandet direkt: två vägar, tre tjänster, vad som händer efter en förfrågan, projekt, vem som står bakom och kontakt. */
+   erbjudandet direkt: två vägar, tre tjänster, vad som händer efter ett mejl, vem som står bakom och kontakt via e-post. */
 :root{
   --djup:#160f1a; --yta:#21182a; --yta2:#2c2136; --text:#f7eef0; --svag:#cdbfca; --linje:#3d3047;
   --magma:#ff7a3d; --glod:#ff3d7f; --viol:#9b6bff; --kort:#f7eef0; --kort-text:#1b1320; --kort-svag:#4e4352; --fel:#ffb3b3; --fel-ljus:#a11d3c;
@@ -147,38 +147,16 @@ ul,ol{margin:0;padding:0}
 
 /* Kontakt */
 .kontakt-kort{background:var(--kort);color:var(--kort-text);border-radius:32px;padding:clamp(1.6rem,5vw,4rem);display:grid;gap:2.4rem}
-@media(min-width:60rem){.kontakt-kort{grid-template-columns:5fr 6fr}}
+.kontakt-kort .knappar{margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:.8rem}
 .kontakt-kort h2{font-size:clamp(2.2rem,5vw,3.8rem)}
-.kontakt-kort .ingress{margin-top:1.1rem;color:var(--kort-svag);font-size:1.1rem;max-width:30rem}
+.kontakt-kort .ingress{margin-top:1.1rem;color:var(--kort-svag);font-size:1.2rem;max-width:34rem}
 .kontakt-kort a{color:#a3264f}
 .direkt{margin-top:1.8rem;display:grid;gap:.4rem}
 .direkt .etikett-mork{font-size:.9rem;font-weight:700;color:var(--kort-svag)}
 .direkt .mejl{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .8rem}
-.direkt .mejl a{font-weight:700;font-size:1.25rem;color:var(--kort-text);word-break:break-word}
+.direkt .mejl a{font-weight:700;font-size:clamp(1rem,4.5vw,1.6rem);color:var(--kort-text);overflow-wrap:anywhere}
 .kopiera{font:600 .85rem/1 var(--sans);border:1.5px solid #cbbdc5;background:#fff;color:var(--kort-text);border-radius:999px;padding:.45rem .8rem;cursor:pointer}
-.integritet{margin-top:1.6rem;font-size:.95rem;color:var(--kort-svag);max-width:30rem}
-.formular{display:grid;gap:1rem;align-content:start}
-.falt{display:grid;gap:.35rem}
-.falt label{font-weight:700}
-.valfri{font-weight:400;color:#5f5463}
-.par{display:grid;gap:1rem}@media(min-width:40rem){.par{grid-template-columns:1fr 1fr}}
-input,select,textarea{font:inherit;color:var(--kort-text);background:#fff;border:1.5px solid #b9a9b3;border-radius:14px;padding:.8rem .95rem;width:100%;min-height:3.1rem}
-textarea{min-height:8.5rem;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset:1px;border-color:#c42a5f}
-[aria-invalid="true"]{border-color:var(--fel-ljus);background:#fff5f6}
-.faltfel{color:var(--fel-ljus);font-size:.92rem;font-weight:600}
-.samtycke{display:flex;gap:.7rem;align-items:flex-start;font-size:.97rem;color:var(--kort-svag)}
-.samtycke input{width:1.35rem;height:1.35rem;min-height:1.35rem;margin-top:.2rem;flex:none;accent-color:#c42a5f}
-.honung{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
-.status{border-radius:16px;padding:1.1rem 1.2rem;font-size:1rem}
-.status:empty{display:none}
-.status.fel{background:#fff0f2;border:1.5px solid #e8a3b4;color:#5a0f22}
-.status.fel strong{display:block;margin-bottom:.3rem}
-.status.fel a{color:#7e1233;font-weight:700}
-.kvitto{border-radius:20px;padding:1.8rem;background:#fff;border:1.5px solid #e4b9c6}
-.kvitto h3{font-size:1.9rem;margin-bottom:.6rem}
-.kvitto p{color:var(--kort-svag)}
-.kvitto p+p{margin-top:.6rem}
+.integritet{margin-top:1.6rem;font-size:.95rem;color:var(--kort-svag);max-width:34rem}
 
 .fot{border-top:1px solid var(--linje);padding-block:2.4rem calc(2.4rem + env(safe-area-inset-bottom,0px));color:var(--svag);font-size:.93rem;margin-top:clamp(3rem,8vw,5rem)}
 .fot .ram{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem}
@@ -221,7 +199,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset
       <span class="etikett">Erupter · bolagsfabriken</span>
       <h1>Vi bygger bolag från idé till första kund.</h1>
       <p>Har du en affärsidé eller kan du en bransch på djupet? Vi prövar idén mot marknaden, bygger en första version och hjälper dig nå de första kunderna – som en tjänst du köper eller i partnerskap.</p>
-      <div class="knappar"><a class="knapp" href="#kontakt">Skicka en förfrågan</a><a class="lank" href="#erbjudande">Se erbjudandet</a></div>
+      <div class="knappar"><a class="knapp" href="#kontakt">Mejla oss</a><a class="lank" href="#erbjudande">Se erbjudandet</a></div>
     </div></div>
     <div class="kapitel" data-k="1" aria-hidden="true"><div>
       <h2>De flesta idéer håller inte.</h2>
@@ -230,7 +208,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset
     <div class="kapitel" data-k="2" aria-hidden="true"><div>
       <h2>Det som håller blir bolag.</h2>
       <p>Kraften läggs på idéerna som riktiga kunder vill ha.</p>
-      <div class="knappar"><a class="knapp" href="#kontakt" tabindex="-1">Skicka en förfrågan</a></div>
+      <div class="knappar"><a class="knapp" href="#kontakt" tabindex="-1">Mejla oss</a></div>
     </div></div>
     <div class="matare" aria-hidden="true"><span><i></i></span><span><i></i></span></div>
     <div class="raknare" id="raknare" aria-hidden="true"></div>
@@ -246,7 +224,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset
       <dl>
         <div><dt>Du får</dt><dd>En idéanalys, en validering mot riktiga kunder eller en första version som kunder kan använda – se tjänsterna nedan.</dd></div>
       </dl>
-      <a class="knapp" href="#kontakt" data-valj="tjanst">Fråga om en tjänst</a>
+      <a class="knapp" href="mailto:tommy@leckbornconsulting.se?subject=Fr%C3%A5ga%20om%20en%20tj%C3%A4nst">Fråga om en tjänst</a>
     </article>
     <article class="vag kort-yta partner">
       <h3>Föreslå ett partnerskap</h3>
@@ -255,7 +233,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset
         <div><dt>Du bidrar med</dt><dd>Branschkunskap, kontakter och förståelse för kundernas problem.</dd></div>
         <div><dt>Vi bidrar med</dt><dd>Analysen, bygget av produkten och driften.</dd></div>
       </dl>
-      <a class="knapp" href="#kontakt" data-valj="partnerskap">Föreslå ett partnerskap</a>
+      <a class="knapp" href="mailto:tommy@leckbornconsulting.se?subject=F%C3%B6rslag%20p%C3%A5%20partnerskap">Föreslå ett partnerskap</a>
     </article>
   </div>
 </div></section>
@@ -268,29 +246,29 @@ input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset
       <p class="for">Passar dig som vill veta om en idé håller innan du lägger pengar på utveckling.</p>
       <h4>Du får</h4>
       <ul class="prickar"><li>En skriftlig analys av marknad, målgrupp och konkurrens</li><li>En bedömning av betalningsvilja, ekonomi och risker</li><li>En rekommendation – satsa, ändra eller avstå – med motivering</li></ul>
-      <a class="valj" href="#kontakt" data-valj="ideanalys">Fråga om idéanalys</a>
+      <a class="valj" href="mailto:tommy@leckbornconsulting.se?subject=Fr%C3%A5ga%20om%20id%C3%A9analys">Fråga om idéanalys</a>
     </article>
     <article class="tjanst kort-yta">
       <h3>Validering mot kunder</h3>
       <p class="for">Passar dig som vill veta om kunderna faktiskt vill betala, innan något byggs.</p>
       <h4>Du får</h4>
       <ul class="prickar"><li>Målgrupp och kontaktlista med källor</li><li>Budskap och erbjudande att testa</li><li>Ett tydligt kriterium för att gå vidare eller lägga ned</li><li>En sammanställning av svaren</li></ul>
-      <a class="valj" href="#kontakt" data-valj="validering">Fråga om validering</a>
+      <a class="valj" href="mailto:tommy@leckbornconsulting.se?subject=Fr%C3%A5ga%20om%20validering">Fråga om validering</a>
     </article>
     <article class="tjanst kort-yta">
       <h3>Bolagsbyggande</h3>
       <p class="for">Passar dig som har en prövad idé och vill få den till ett fungerande bolag.</p>
       <h4>Du får</h4>
       <ul class="prickar"><li>En första version av produkten som kunder kan använda</li><li>Kontakt med de första kunderna</li><li>Uppföljning av intäkter och kostnader</li></ul>
-      <a class="valj" href="#kontakt" data-valj="bolagsbyggande">Fråga om bolagsbyggande</a>
+      <a class="valj" href="mailto:tommy@leckbornconsulting.se?subject=Fr%C3%A5ga%20om%20bolagsbyggande">Fråga om bolagsbyggande</a>
     </article>
   </div>
 </div></section>
 
 <section class="sektion" id="efter" aria-labelledby="r-efter"><div class="ram">
-  <div class="huvudrad"><h2 id="r-efter">Efter din förfrågan</h2><p>Så här går det till när du har skickat en förfrågan.</p></div>
+  <div class="huvudrad"><h2 id="r-efter">När du har mejlat oss</h2><p>Så här går det till.</p></div>
   <ol class="steg">
-    <li class="kort-yta"><h3>Vi läser</h3><p>Din förfrågan sparas hos oss och vi går igenom den.</p></li>
+    <li class="kort-yta"><h3>Vi läser</h3><p>Vi går igenom det du har skrivit.</p></li>
     <li class="kort-yta"><h3>Vi svarar</h3><p>Du får svar via e-post med frågor eller ett förslag på nästa steg.</p></li>
     <li class="kort-yta"><h3>Nästa steg</h3><p>Om det passar båda går vi vidare tillsammans utifrån det förslaget.</p></li>
   </ol>
@@ -308,7 +286,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset
       <div><dt>Bolag</dt><dd>Leckborn Consulting AB</dd></div>
       <div><dt>Organisationsnummer</dt><dd>559173-0741</dd></div>
       <div><dt>Säte</dt><dd>Kungälv</dd></div>
-      <div><dt>E-post</dt><dd><a href="mailto:info@leckbornconsulting.se">info@leckbornconsulting.se</a></dd></div>
+      <div><dt>E-post</dt><dd><a href="mailto:tommy@leckbornconsulting.se">tommy@leckbornconsulting.se</a></dd></div>
     </dl>
   </div>
 </div></section>
@@ -316,43 +294,20 @@ input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset
 <section class="sektion" id="kontakt" style="padding-top:0" aria-labelledby="r-kontakt"><div class="ram">
   <div class="kontakt-kort">
     <div>
-      <h2 id="r-kontakt">Skicka en förfrågan</h2>
-      <p class="ingress">Berätta kort om idén, tjänsten du behöver eller samarbetet du har i tankarna. Vi svarar via e-post.</p>
+      <h2 id="r-kontakt">Kontakt</h2>
+      <p class="ingress">Har du en idé eller vill diskutera ett samarbete? Mejla oss och berätta kort.</p>
       <div class="direkt">
-        <span class="etikett-mork">Hellre mejl?</span>
-        <div class="mejl"><a href="mailto:info@leckbornconsulting.se">info@leckbornconsulting.se</a><button class="kopiera" type="button" data-kopiera="info@leckbornconsulting.se">Kopiera</button></div>
+        <span class="etikett-mork">E-post</span>
+        <div class="mejl"><a href="mailto:tommy@leckbornconsulting.se">tommy@<wbr>leckbornconsulting.se</a><button class="kopiera" type="button" data-kopiera="tommy@leckbornconsulting.se">Kopiera</button></div>
       </div>
-      <p class="integritet">Vi använder dina uppgifter bara för att besvara förfrågan och följa upp den. Vi säljer eller lämnar inte ut dem. <a href="/integritet/">Så behandlar vi personuppgifter</a>.</p>
-    </div>
-    <div id="formplats">
-      <!-- data-endpoint: Forminit-formulärets adress, https://forminit.com/f/<formulär-id>. Tom = formuläret är inte i drift och besökaren får e-post som alternativ. -->
-      <form class="formular" id="formular" novalidate data-endpoint="">
-        <div class="falt"><label for="f-amne">Vad gäller det?</label>
-          <select id="f-amne" name="amne">
-            <option value="ideanalys">Köpa en tjänst: Idéanalys</option>
-            <option value="validering">Köpa en tjänst: Validering mot kunder</option>
-            <option value="bolagsbyggande">Köpa en tjänst: Bolagsbyggande</option>
-            <option value="tjanst">Köpa en tjänst: vet inte vilken än</option>
-            <option value="partnerskap">Föreslå ett partnerskap</option>
-            <option value="annat">Något annat</option>
-          </select></div>
-        <div class="par">
-          <div class="falt"><label for="f-namn">Namn</label><input id="f-namn" name="namn" autocomplete="name" required maxlength="120" aria-describedby="e-namn"><span class="faltfel" id="e-namn" hidden></span></div>
-          <div class="falt"><label for="f-foretag">Företag <span class="valfri">(valfritt)</span></label><input id="f-foretag" name="foretag" autocomplete="organization" maxlength="120"></div>
-        </div>
-        <div class="falt"><label for="f-mejl">E-post</label><input id="f-mejl" name="mejl" type="email" autocomplete="email" required maxlength="120" aria-describedby="e-mejl"><span class="faltfel" id="e-mejl" hidden></span></div>
-        <div class="falt"><label for="f-meddelande">Berätta kort vad det gäller</label><textarea id="f-meddelande" name="meddelande" required maxlength="4000" aria-describedby="e-meddelande"></textarea><span class="faltfel" id="e-meddelande" hidden></span></div>
-        <div class="honung" aria-hidden="true"><label for="f-webb">Lämna tomt</label><input id="f-webb" name="webbplats" tabindex="-1" autocomplete="off"></div>
-        <div class="falt"><label class="samtycke"><input type="checkbox" id="f-samtycke" name="samtycke" aria-describedby="e-samtycke"><span>Jag har läst <a href="/integritet/">hur mina uppgifter behandlas</a>.</span></label><span class="faltfel" id="e-samtycke" hidden></span></div>
-        <div class="status" id="status" role="alert"></div>
-        <div><button class="knapp mork" type="submit" id="skicka">Skicka förfrågan</button></div>
-      </form>
+      <div class="knappar"><a class="knapp mork" href="mailto:tommy@leckbornconsulting.se">Mejla oss</a></div>
+      <p class="integritet">Vi använder uppgifterna i ditt mejl bara för att svara och följa upp. Vi säljer eller lämnar inte ut dem. <a href="/integritet/">Så behandlar vi personuppgifter</a>.</p>
     </div>
   </div>
 </div></section>
 </main>
 <footer class="fot"><div class="ram">
-  <span><strong>Leckborn Consulting AB</strong> · Org.nr 559173-0741 · Kungälv · <a href="mailto:info@leckbornconsulting.se">info@leckbornconsulting.se</a></span>
+  <span><strong>Leckborn Consulting AB</strong> · Org.nr 559173-0741 · Kungälv · <a href="mailto:tommy@leckbornconsulting.se">tommy@leckbornconsulting.se</a></span>
   <span><a href="/integritet/">Integritetspolicy</a> · Inga kakor, ingen spårning · © 2026</span>
 </div></footer>
 
@@ -378,56 +333,6 @@ document.querySelectorAll('.tjanst').forEach(function(el){el.addEventListener('p
 // ---------- Kopiera e-postadressen ----------
 document.querySelectorAll('[data-kopiera]').forEach(function(b){b.addEventListener('click',function(){var t=b.getAttribute('data-kopiera');var klart=function(){b.textContent='Kopierad';setTimeout(function(){b.textContent='Kopiera';},2000);};
   if(navigator.clipboard)navigator.clipboard.writeText(t).then(klart,function(){});});});
-
-// ---------- Formuläret: serverbaserad mottagning ----------
-var form=document.getElementById('formular'),status=document.getElementById('status'),knapp=document.getElementById('skicka'),amne=document.getElementById('f-amne');
-var ENDPOINT=(form.getAttribute('data-endpoint')||'').trim();
-var klientId=nyttId(),skickar=false;
-function nyttId(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():('id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10));}
-document.addEventListener('click',function(e){var a=e.target.closest('[data-valj]');if(a){amne.value=a.getAttribute('data-valj');}});
-var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
-function visaFaltfel(namn,text){var f=form.elements[namn],e=document.getElementById('e-'+namn);if(!f||!e)return;if(text){f.setAttribute('aria-invalid','true');e.textContent=text;e.hidden=false;}else{f.removeAttribute('aria-invalid');e.textContent='';e.hidden=true;}}
-function rensaFel(){['namn','mejl','meddelande','samtycke'].forEach(function(n){visaFaltfel(n,'');});status.className='status';status.innerHTML='';}
-function mejlLank(){var text='Namn: '+form.namn.value.trim()+'\nFöretag: '+form.foretag.value.trim()+'\nE-post: '+form.mejl.value.trim()+'\n\n'+form.meddelande.value.trim();
-  return 'mailto:info@leckbornconsulting.se?subject='+encodeURIComponent('Förfrågan: '+amne.options[amne.selectedIndex].text)+'&body='+encodeURIComponent(text);}
-function visaFel(rubrik,text){status.className='status fel';status.innerHTML='<strong>'+esc(rubrik)+'</strong>'+esc(text)+' Din text finns kvar i formuläret. Du kan också <a href="'+esc(mejlLank())+'">skicka den med ditt e-postprogram</a> till info@leckbornconsulting.se.';}
-function kontrollera(){var fel={};
-  if(!form.namn.value.trim())fel.namn='Skriv ditt namn.';
-  if(!/^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(form.mejl.value.trim()))fel.mejl='Skriv en giltig e-postadress, till exempel namn@foretag.se.';
-  if(form.meddelande.value.trim().length<5)fel.meddelande='Berätta kort vad det gäller.';
-  if(!form.samtycke.checked)fel.samtycke='Bekräfta att du läst hur uppgifterna behandlas.';
-  return fel;}
-form.addEventListener('submit',function(e){
-  e.preventDefault();
-  if(skickar)return; // upprepade klick
-  rensaFel();
-  var fel=kontrollera(),namn=Object.keys(fel);
-  if(namn.length){namn.forEach(function(n){visaFaltfel(n,fel[n]);});form.elements[namn[0]].focus();return;}
-  if(!ENDPOINT){visaFel('Formuläret är inte i drift just nu.','Förfrågan har inte skickats.');return;}
-  if(form.webbplats.value){document.getElementById('formplats').innerHTML='<div class="kvitto" role="status"><h3>Tack, förfrågan är mottagen.</h3></div>';return;} // spamfälla: robotar fyller i allt
-  skickar=true;knapp.disabled=true;knapp.textContent='Skickar …';form.setAttribute('aria-busy','true');
-  var data={namn:form.namn.value.trim(),foretag:form.foretag.value.trim(),mejl:form.mejl.value.trim(),amne:amne.options[amne.selectedIndex].text,meddelande:form.meddelande.value.trim()};
-  var avsandare={email:data.mejl,fullName:data.namn};if(data.foretag)avsandare.company=data.foretag;
-  // Forminit sparar förfrågan och svarar först därefter med ett id (hashId) som blir kundens referens. Aviseringen till info@ skickas av Forminit efter att den sparats.
-  var kropp={blocks:[{type:'sender',properties:avsandare},{type:'text',name:'galler',value:data.amne},{type:'text',name:'meddelande',value:data.meddelande},
-    {type:'text',name:'klientreferens',value:klientId},{type:'text',name:'samtycke',value:'Har läst integritetsinformationen'},{type:'text',name:'sida',value:location.pathname}]};
-  var avbryt=new AbortController(),timer=setTimeout(function(){avbryt.abort();},15000);
-  fetch(ENDPOINT,{method:'POST',headers:{'content-type':'application/json',accept:'application/json'},body:JSON.stringify(kropp),signal:avbryt.signal,credentials:'omit'})
-  .then(function(r){return r.json().catch(function(){return {};}).then(function(d){return {kod:r.status,d:d};});})
-  .then(function(s){
-    var ref=s.d&&s.d.submission&&s.d.submission.hashId;
-    if(s.kod>=200&&s.kod<300&&s.d.success&&ref){
-      var fornamn=data.namn.split(' ')[0];
-      document.getElementById('formplats').innerHTML='<div class="kvitto" role="status" tabindex="-1" id="kvitto"><h3>Tack '+esc(fornamn)+', förfrågan är mottagen.</h3><p>Den är sparad och vi svarar via e-post till '+esc(data.mejl)+'.</p><p>Referens: '+esc(ref)+'</p></div>';
-      document.getElementById('kvitto').focus();klientId=nyttId();return;}
-    var kod=s.d&&s.d.error,kodnr=(s.d&&Number(s.d.code))||s.kod; // Forminit kan svara HTTP 200 med felkod i kroppen
-    if(kod==='FI_SCHEMA_FORMAT_EMAIL'){visaFaltfel('mejl','Skriv en giltig e-postadress, till exempel namn@foretag.se.');visaFel('Något behöver rättas.','Kontrollera e-postadressen.');form.mejl.focus();return;}
-    if(kodnr===429||kod==='TOO_MANY_REQUESTS'){visaFel('Vänta några sekunder.','Det går att skicka en förfrågan var femte sekund. Försök igen strax.');return;}
-    visaFel('Förfrågan kunde inte bekräftas.','Ett tekniskt fel uppstod och vi kan inte bekräfta att den sparades.');
-  })
-  .catch(function(){visaFel('Förfrågan kunde inte skickas.','Anslutningen bröts eller tog för lång tid. Om du försöker igen kan förfrågan komma fram två gånger – det gör inget.');})
-  .then(function(){clearTimeout(timer);skickar=false;if(document.body.contains(knapp)){knapp.disabled=false;knapp.textContent='Skicka förfrågan';form.removeAttribute('aria-busy');}});
-});
 
 // ---------- Partikelfältet: idéer → sållning → bolag ----------
 var cv=document.getElementById('falt'),ctx=cv.getContext('2d'),film=document.querySelector('.film');

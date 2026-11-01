@@ -12,6 +12,6 @@
 - Bolagsbyggande: första version som kunder kan använda, kontakt med de första kunderna, uppföljning av intäkter och kostnader.
 
 ## Kontakt
-- E-post: info@leckbornconsulting.se
+- E-post: tommy@leckbornconsulting.se
 - Webbplats: https://leckbornconsulting.se/
 - Integritetspolicy: https://leckbornconsulting.se/integritet/

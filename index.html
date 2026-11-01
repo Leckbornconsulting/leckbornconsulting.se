@@ -325,7 +325,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid #c42a5f;outline-offset
       <p class="integritet">Vi använder dina uppgifter bara för att besvara förfrågan och följa upp den. Vi säljer eller lämnar inte ut dem. <a href="/integritet/">Så behandlar vi personuppgifter</a>.</p>
     </div>
     <div id="formplats">
-      <!-- data-endpoint: Webbvis mottagning. Tom = formuläret är inte i drift och besökaren får e-post som alternativ. -->
+      <!-- data-endpoint: Forminit-formulärets adress, https://forminit.com/f/<formulär-id>. Tom = formuläret är inte i drift och besökaren får e-post som alternativ. -->
       <form class="formular" id="formular" novalidate data-endpoint="">
         <div class="falt"><label for="f-amne">Vad gäller det?</label>
           <select id="f-amne" name="amne">
@@ -382,9 +382,8 @@ document.querySelectorAll('[data-kopiera]').forEach(function(b){b.addEventListen
 // ---------- Formuläret: serverbaserad mottagning ----------
 var form=document.getElementById('formular'),status=document.getElementById('status'),knapp=document.getElementById('skicka'),amne=document.getElementById('f-amne');
 var ENDPOINT=(form.getAttribute('data-endpoint')||'').trim();
-var start=0,klientId=nyttId(),skickar=false;
+var klientId=nyttId(),skickar=false;
 function nyttId(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():('id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10));}
-form.addEventListener('input',function(){if(!start)start=Date.now();},{once:false});
 document.addEventListener('click',function(e){var a=e.target.closest('[data-valj]');if(a){amne.value=a.getAttribute('data-valj');}});
 var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
 function visaFaltfel(namn,text){var f=form.elements[namn],e=document.getElementById('e-'+namn);if(!f||!e)return;if(text){f.setAttribute('aria-invalid','true');e.textContent=text;e.hidden=false;}else{f.removeAttribute('aria-invalid');e.textContent='';e.hidden=true;}}
@@ -405,21 +404,28 @@ form.addEventListener('submit',function(e){
   var fel=kontrollera(),namn=Object.keys(fel);
   if(namn.length){namn.forEach(function(n){visaFaltfel(n,fel[n]);});form.elements[namn[0]].focus();return;}
   if(!ENDPOINT){visaFel('Formuläret är inte i drift just nu.','Förfrågan har inte skickats.');return;}
+  if(form.webbplats.value){document.getElementById('formplats').innerHTML='<div class="kvitto" role="status"><h3>Tack, förfrågan är mottagen.</h3></div>';return;} // spamfälla: robotar fyller i allt
   skickar=true;knapp.disabled=true;knapp.textContent='Skickar …';form.setAttribute('aria-busy','true');
-  var data={id:klientId,namn:form.namn.value.trim(),foretag:form.foretag.value.trim(),mejl:form.mejl.value.trim(),amne:amne.options[amne.selectedIndex].text,meddelande:form.meddelande.value.trim(),samtycke:form.samtycke.checked,webbplats:form.webbplats.value,fylltidMs:start?Date.now()-start:0,sida:location.pathname};
+  var data={namn:form.namn.value.trim(),foretag:form.foretag.value.trim(),mejl:form.mejl.value.trim(),amne:amne.options[amne.selectedIndex].text,meddelande:form.meddelande.value.trim()};
+  var avsandare={email:data.mejl,fullName:data.namn};if(data.foretag)avsandare.company=data.foretag;
+  // Forminit sparar förfrågan och svarar först därefter med ett id (hashId) som blir kundens referens. Aviseringen till info@ skickas av Forminit efter att den sparats.
+  var kropp={blocks:[{type:'sender',properties:avsandare},{type:'text',name:'galler',value:data.amne},{type:'text',name:'meddelande',value:data.meddelande},
+    {type:'text',name:'klientreferens',value:klientId},{type:'text',name:'samtycke',value:'Har läst integritetsinformationen'},{type:'text',name:'sida',value:location.pathname}]};
   var avbryt=new AbortController(),timer=setTimeout(function(){avbryt.abort();},15000);
-  fetch(ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data),signal:avbryt.signal,credentials:'omit'})
+  fetch(ENDPOINT,{method:'POST',headers:{'content-type':'application/json',accept:'application/json'},body:JSON.stringify(kropp),signal:avbryt.signal,credentials:'omit'})
   .then(function(r){return r.json().catch(function(){return {};}).then(function(d){return {kod:r.status,d:d};});})
   .then(function(s){
-    if((s.kod===201||s.kod===200)&&s.d&&s.d.ok){
+    var ref=s.d&&s.d.submission&&s.d.submission.hashId;
+    if(s.kod>=200&&s.kod<300&&s.d.success&&ref){
       var fornamn=data.namn.split(' ')[0];
-      document.getElementById('formplats').innerHTML='<div class="kvitto" role="status" tabindex="-1" id="kvitto"><h3>Tack '+esc(fornamn)+', förfrågan är mottagen.</h3><p>Den är sparad hos oss och vi svarar via e-post till '+esc(data.mejl)+'.</p><p>Referens: '+esc(s.d.id)+'</p></div>';
+      document.getElementById('formplats').innerHTML='<div class="kvitto" role="status" tabindex="-1" id="kvitto"><h3>Tack '+esc(fornamn)+', förfrågan är mottagen.</h3><p>Den är sparad och vi svarar via e-post till '+esc(data.mejl)+'.</p><p>Referens: '+esc(ref)+'</p></div>';
       document.getElementById('kvitto').focus();klientId=nyttId();return;}
-    if(s.kod===400&&s.d&&s.d.falt){Object.keys(s.d.falt).forEach(function(n){visaFaltfel(n,s.d.falt[n]);});visaFel('Något behöver rättas.','Kontrollera fälten ovan.');return;}
-    if(s.kod===429){visaFel('För många försök.','Vänta en stund och försök igen.');return;}
-    visaFel('Förfrågan kunde inte tas emot.','Ett tekniskt fel uppstod hos oss.');
+    var kod=s.d&&s.d.error;
+    if(kod==='FI_SCHEMA_FORMAT_EMAIL'){visaFaltfel('mejl','Skriv en giltig e-postadress, till exempel namn@foretag.se.');visaFel('Något behöver rättas.','Kontrollera e-postadressen.');form.mejl.focus();return;}
+    if(s.kod===429){visaFel('Vänta några sekunder.','Det går att skicka en förfrågan var femte sekund. Försök igen strax.');return;}
+    visaFel('Förfrågan kunde inte bekräftas.','Ett tekniskt fel uppstod och vi kan inte bekräfta att den sparades.');
   })
-  .catch(function(){visaFel('Förfrågan kunde inte skickas.','Anslutningen bröts eller tog för lång tid.');})
+  .catch(function(){visaFel('Förfrågan kunde inte skickas.','Anslutningen bröts eller tog för lång tid. Om du försöker igen kan förfrågan komma fram två gånger – det gör inget.');})
   .then(function(){clearTimeout(timer);skickar=false;if(document.body.contains(knapp)){knapp.disabled=false;knapp.textContent='Skicka förfrågan';form.removeAttribute('aria-busy');}});
 });
 

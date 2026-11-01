@@ -1,13 +1,17 @@
 # Leckborn Consulting AB – Erupter bolagsfabriken
 
-> Erupter är bolagsfabriken hos Leckborn Consulting AB (org.nr 559173-0741). Idéer analyseras, testas mot riktiga kunder och byggs till bolag med AI – människor fattar besluten.
+> Leckborn Consulting AB (org.nr 559173-0741, Kungälv) – Erupter bolagsfabriken. Vi prövar affärsidéer mot marknaden, bygger en första version och hjälper till med de första kunderna – som tjänst eller i partnerskap.
+
+## Två sätt att arbeta med oss
+- Köpa en tjänst: idéanalys, validering mot kunder eller bolagsbyggande.
+- Partnerskap: du står för branschkunskapen och kontakterna, vi för analys, bygge och drift. Hur ett samarbete läggs upp avgörs från fall till fall.
 
 ## Tjänster
-- Bolagsbyggande: en idé hela vägen till ett fungerande bolag med produkt, kunder och drift.
-- Idéanalys: kritisk bedömning av marknad, betalningsvilja, konkurrens och ekonomi innan något byggs.
-- Validering mot kunder: efterfrågan testas med riktiga kunder innan pengar läggs på utveckling.
-- Partnerskap: du står för branschkunskapen, fabriken för analys, bygge och drift.
+- Idéanalys: skriftlig analys av marknad, målgrupp, konkurrens, betalningsvilja, ekonomi och risker, med rekommendation (satsa, ändra eller avstå).
+- Validering mot kunder: målgrupp och kontaktlista med källor, budskap, kriterium för att gå vidare eller lägga ned, sammanställning av svaren.
+- Bolagsbyggande: första version som kunder kan använda, kontakt med de första kunderna, uppföljning av intäkter och kostnader.
 
 ## Kontakt
-- E-post: info@leckbornconsulting.se
+- E-post: tommy@leckbornconsulting.se
 - Webbplats: https://leckbornconsulting.se/
+- Integritetspolicy: https://leckbornconsulting.se/integritet/
